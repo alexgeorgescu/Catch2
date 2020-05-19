@@ -242,3 +242,5 @@ namespace Catch {
     }
 
 } // end namespace Catch
+
+template class std::unique_ptr<Catch::TestCaseInfo>;

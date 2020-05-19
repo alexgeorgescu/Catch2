@@ -33,4 +33,6 @@ namespace Catch {
 
 } // namespace Catch
 
+extern template class std::unique_ptr<Catch::IExceptionTranslator const>;
+
 #endif // TWOBLUECUBES_CATCH_INTERFACES_EXCEPTION_H_INCLUDED

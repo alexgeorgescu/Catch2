@@ -30,8 +30,6 @@ namespace Catch {
         StringRef original, lowerCased;
     };
 
-    struct ITestInvoker;
-
     enum class TestCaseProperties : uint8_t {
         None = 0,
         IsHidden = 1 << 1,
@@ -94,6 +92,8 @@ namespace Catch {
                             NameAndTags const& nameAndTags,
                             SourceLineInfo const& lineInfo );
 }
+
+extern template class std::unique_ptr<Catch::TestCaseInfo>;
 
 #ifdef __clang__
 #pragma clang diagnostic pop

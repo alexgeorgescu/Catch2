@@ -243,4 +243,7 @@ namespace Catch {
 
 } // end namespace Catch
 
+extern template class std::unique_ptr<Catch::IReporterFactory>;
+
+
 #endif // TWOBLUECUBES_CATCH_INTERFACES_REPORTER_H_INCLUDED

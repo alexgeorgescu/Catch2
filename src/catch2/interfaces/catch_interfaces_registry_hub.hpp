@@ -58,6 +58,8 @@ namespace Catch {
     void cleanUp();
     std::string translateActiveException();
 
-}
+} // namespace Catch
+
+extern template class std::unique_ptr<Catch::IReporterFactory>;
 
 #endif // TWOBLUECUBES_CATCH_INTERFACES_REGISTRY_HUB_H_INCLUDED

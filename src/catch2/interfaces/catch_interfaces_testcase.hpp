@@ -36,6 +36,8 @@ namespace Catch {
     std::vector<TestCaseHandle> filterTests( std::vector<TestCaseHandle> const& testCases, TestSpec const& testSpec, IConfig const& config );
     std::vector<TestCaseHandle> const& getAllTestCasesSorted( IConfig const& config );
 
-}
+} // namespace Catch
+
+extern template class std::unique_ptr<Catch::ITestInvoker>;
 
 #endif // TWOBLUECUBES_CATCH_INTERFACES_TESTCASE_H_INCLUDED

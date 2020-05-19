@@ -77,3 +77,13 @@ namespace Catch {
     ITestInvoker::~ITestInvoker() = default;
     ITestCaseRegistry::~ITestCaseRegistry() = default;
 }
+
+////////////////////////////////////////////////////
+//   vvv  externed templates in interfaces  vvv   //
+////////////////////////////////////////////////////
+
+#include <catch2/interfaces/catch_interfaces_reporter.hpp>
+
+template class std::unique_ptr<Catch::ITestInvoker>;
+template class std::unique_ptr<Catch::IExceptionTranslator const>;
+template class std::unique_ptr<Catch::IReporterFactory>;
