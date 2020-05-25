@@ -26,7 +26,6 @@
 #include <string>
 #include <iosfwd>
 #include <map>
-#include <memory>
 #include <algorithm>
 
 namespace Catch {
@@ -223,7 +222,7 @@ namespace Catch {
         virtual void listTags(std::vector<TagInfo> const& tags, Config const& config);
 
     };
-    using IStreamingReporterPtr = std::unique_ptr<IStreamingReporter>;
+    using IStreamingReporterPtr = Detail::unique_ptr<IStreamingReporter>;
 
     struct IReporterFactory {
         virtual ~IReporterFactory();
