@@ -180,6 +180,11 @@
     <testCase name="parseEnums/One enum value" duration="{duration}"/>
     <testCase name="parseEnums/Multiple enum values" duration="{duration}"/>
   </file>
+  <file path="tests/<exe-name>/IntrospectiveTests/UniquePtr.tests.cpp">
+    <testCase name="Basic compilation test/Default constructed unique_ptr is empty" duration="{duration}"/>
+    <testCase name="Basic compilation test/Basic behaviour" duration="{duration}"/>
+    <testCase name="Basic compilation test/Release releases ownership" duration="{duration}"/>
+  </file>
   <file path="tests/<exe-name>/IntrospectiveTests/Xml.tests.cpp">
     <testCase name="XmlEncode/normal string" duration="{duration}"/>
     <testCase name="XmlEncode/empty string" duration="{duration}"/>

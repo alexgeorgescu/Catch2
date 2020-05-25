@@ -2270,6 +2270,106 @@ Nor would this
       </Section>
       <OverallResult success="true"/>
     </TestCase>
+    <TestCase name="Basic compilation test" tags="[internals][unique-ptr]" filename="tests/<exe-name>/IntrospectiveTests/UniquePtr.tests.cpp" >
+      <Section name="Default constructed unique_ptr is empty" filename="tests/<exe-name>/IntrospectiveTests/UniquePtr.tests.cpp" >
+        <Expression success="true" type="REQUIRE_FALSE" filename="tests/<exe-name>/IntrospectiveTests/UniquePtr.tests.cpp" >
+          <Original>
+            !(ptr)
+          </Original>
+          <Expanded>
+            !{?}
+          </Expanded>
+        </Expression>
+        <Expression success="true" type="REQUIRE" filename="tests/<exe-name>/IntrospectiveTests/UniquePtr.tests.cpp" >
+          <Original>
+            ptr.get() == 0
+          </Original>
+          <Expanded>
+            0 == 0
+          </Expanded>
+        </Expression>
+        <OverallResults successes="2" failures="0" expectedFailures="0"/>
+      </Section>
+      <Section name="Basic behaviour" filename="tests/<exe-name>/IntrospectiveTests/UniquePtr.tests.cpp" >
+        <Expression success="true" type="REQUIRE" filename="tests/<exe-name>/IntrospectiveTests/UniquePtr.tests.cpp" >
+          <Original>
+            ptr2
+          </Original>
+          <Expanded>
+            {?}
+          </Expanded>
+        </Expression>
+        <Expression success="true" type="REQUIRE" filename="tests/<exe-name>/IntrospectiveTests/UniquePtr.tests.cpp" >
+          <Original>
+            *ptr2 == 0
+          </Original>
+          <Expanded>
+            0 == 0
+          </Expanded>
+        </Expression>
+        <Expression success="true" type="REQUIRE" filename="tests/<exe-name>/IntrospectiveTests/UniquePtr.tests.cpp" >
+          <Original>
+            ptr2.get() == naked_ptr
+          </Original>
+          <Expanded>
+            0x<hex digits> == 0x<hex digits>
+          </Expanded>
+        </Expression>
+        <Expression success="true" type="REQUIRE_FALSE" filename="tests/<exe-name>/IntrospectiveTests/UniquePtr.tests.cpp" >
+          <Original>
+            !(ptr2)
+          </Original>
+          <Expanded>
+            !{?}
+          </Expanded>
+        </Expression>
+        <Expression success="true" type="REQUIRE" filename="tests/<exe-name>/IntrospectiveTests/UniquePtr.tests.cpp" >
+          <Original>
+            ptr2.get() == 0
+          </Original>
+          <Expanded>
+            0 == 0
+          </Expanded>
+        </Expression>
+        <Expression success="true" type="REQUIRE" filename="tests/<exe-name>/IntrospectiveTests/UniquePtr.tests.cpp" >
+          <Original>
+            ptr2
+          </Original>
+          <Expanded>
+            {?}
+          </Expanded>
+        </Expression>
+        <Expression success="true" type="REQUIRE" filename="tests/<exe-name>/IntrospectiveTests/UniquePtr.tests.cpp" >
+          <Original>
+            ptr2.get() != 0
+          </Original>
+          <Expanded>
+            0x<hex digits> != 0
+          </Expanded>
+        </Expression>
+        <Expression success="true" type="REQUIRE" filename="tests/<exe-name>/IntrospectiveTests/UniquePtr.tests.cpp" >
+          <Original>
+            *ptr2 == 2
+          </Original>
+          <Expanded>
+            2 == 2
+          </Expanded>
+        </Expression>
+        <OverallResults successes="8" failures="0" expectedFailures="0"/>
+      </Section>
+      <Section name="Release releases ownership" filename="tests/<exe-name>/IntrospectiveTests/UniquePtr.tests.cpp" >
+        <Expression success="true" type="CHECK_FALSE" filename="tests/<exe-name>/IntrospectiveTests/UniquePtr.tests.cpp" >
+          <Original>
+            !(ptr)
+          </Original>
+          <Expanded>
+            !{?}
+          </Expanded>
+        </Expression>
+        <OverallResults successes="1" failures="0" expectedFailures="0"/>
+      </Section>
+      <OverallResult success="true"/>
+    </TestCase>
     <TestCase name="Basic use of the Contains range matcher" tags="[contains][matchers][templated]" filename="tests/<exe-name>/UsageTests/MatchersRanges.tests.cpp" >
       <Section name="Different argument ranges, same element type, default comparison" filename="tests/<exe-name>/UsageTests/MatchersRanges.tests.cpp" >
         <Expression success="true" type="REQUIRE_THAT" filename="tests/<exe-name>/UsageTests/MatchersRanges.tests.cpp" >
@@ -17756,7 +17856,7 @@ loose text artifact
       </Section>
       <OverallResult success="true"/>
     </TestCase>
-    <OverallResults successes="1744" failures="149" expectedFailures="21"/>
+    <OverallResults successes="1755" failures="149" expectedFailures="21"/>
   </Group>
-  <OverallResults successes="1744" failures="148" expectedFailures="21"/>
+  <OverallResults successes="1755" failures="148" expectedFailures="21"/>
 </Catch>

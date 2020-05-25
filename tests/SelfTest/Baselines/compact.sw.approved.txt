@@ -254,6 +254,17 @@ Tricky.tests.cpp:<line number>: passed: true
 Tricky.tests.cpp:<line number>: passed: true
 Tricky.tests.cpp:<line number>: passed: true
 Tricky.tests.cpp:<line number>: passed: true
+UniquePtr.tests.cpp:<line number>: passed: !(ptr) for: !{?}
+UniquePtr.tests.cpp:<line number>: passed: ptr.get() == 0 for: 0 == 0
+UniquePtr.tests.cpp:<line number>: passed: ptr2 for: {?}
+UniquePtr.tests.cpp:<line number>: passed: *ptr2 == 0 for: 0 == 0
+UniquePtr.tests.cpp:<line number>: passed: ptr2.get() == naked_ptr for: 0x<hex digits> == 0x<hex digits>
+UniquePtr.tests.cpp:<line number>: passed: !(ptr2) for: !{?}
+UniquePtr.tests.cpp:<line number>: passed: ptr2.get() == 0 for: 0 == 0
+UniquePtr.tests.cpp:<line number>: passed: ptr2 for: {?}
+UniquePtr.tests.cpp:<line number>: passed: ptr2.get() != 0 for: 0x<hex digits> != 0
+UniquePtr.tests.cpp:<line number>: passed: *ptr2 == 2 for: 2 == 2
+UniquePtr.tests.cpp:<line number>: passed: !(ptr) for: !{?}
 MatchersRanges.tests.cpp:<line number>: passed: a, Contains(1) for: { 1, 2, 3 } contains element 1
 MatchersRanges.tests.cpp:<line number>: passed: b, Contains(1) for: { 0, 1, 2 } contains element 1
 MatchersRanges.tests.cpp:<line number>: passed: c, !Contains(1) for: { 4, 5, 6 } not contains element 1

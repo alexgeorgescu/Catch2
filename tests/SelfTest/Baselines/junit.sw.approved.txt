@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuitesloose text artifact
 >
-  <testsuite name="<exe-name>" errors="17" failures="132" tests="1914" hostname="tbd" time="{duration}" timestamp="{iso8601-timestamp}">
+  <testsuite name="<exe-name>" errors="17" failures="132" tests="1925" hostname="tbd" time="{duration}" timestamp="{iso8601-timestamp}">
     <properties>
       <property name="filters" value="~[!nonportable]~[!benchmark]~[approvals] *"/>
       <property name="random-seed" value="1"/>
@@ -345,6 +345,9 @@ Exception.tests.cpp:<line number>
     <testcase classname="<exe-name>.global" name="Assertions then sections/A section" time="{duration}"/>
     <testcase classname="<exe-name>.global" name="Assertions then sections/A section/Another section" time="{duration}"/>
     <testcase classname="<exe-name>.global" name="Assertions then sections/A section/Another other section" time="{duration}"/>
+    <testcase classname="<exe-name>.global" name="Basic compilation test/Default constructed unique_ptr is empty" time="{duration}"/>
+    <testcase classname="<exe-name>.global" name="Basic compilation test/Basic behaviour" time="{duration}"/>
+    <testcase classname="<exe-name>.global" name="Basic compilation test/Release releases ownership" time="{duration}"/>
     <testcase classname="<exe-name>.global" name="Basic use of the Contains range matcher/Different argument ranges, same element type, default comparison" time="{duration}"/>
     <testcase classname="<exe-name>.global" name="Basic use of the Contains range matcher/Different argument ranges, same element type, custom comparison" time="{duration}"/>
     <testcase classname="<exe-name>.global" name="Basic use of the Contains range matcher/Different element type, custom comparisons" time="{duration}"/>

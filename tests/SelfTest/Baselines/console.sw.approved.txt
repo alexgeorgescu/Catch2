@@ -2019,6 +2019,82 @@ Tricky.tests.cpp:<line number>: PASSED:
   REQUIRE( true )
 
 -------------------------------------------------------------------------------
+Basic compilation test
+  Default constructed unique_ptr is empty
+-------------------------------------------------------------------------------
+UniquePtr.tests.cpp:<line number>
+...............................................................................
+
+UniquePtr.tests.cpp:<line number>: PASSED:
+  REQUIRE_FALSE( ptr )
+with expansion:
+  !{?}
+
+UniquePtr.tests.cpp:<line number>: PASSED:
+  REQUIRE( ptr.get() == 0 )
+with expansion:
+  0 == 0
+
+-------------------------------------------------------------------------------
+Basic compilation test
+  Basic behaviour
+-------------------------------------------------------------------------------
+UniquePtr.tests.cpp:<line number>
+...............................................................................
+
+UniquePtr.tests.cpp:<line number>: PASSED:
+  REQUIRE( ptr2 )
+with expansion:
+  {?}
+
+UniquePtr.tests.cpp:<line number>: PASSED:
+  REQUIRE( *ptr2 == 0 )
+with expansion:
+  0 == 0
+
+UniquePtr.tests.cpp:<line number>: PASSED:
+  REQUIRE( ptr2.get() == naked_ptr )
+with expansion:
+  0x<hex digits> == 0x<hex digits>
+
+UniquePtr.tests.cpp:<line number>: PASSED:
+  REQUIRE_FALSE( ptr2 )
+with expansion:
+  !{?}
+
+UniquePtr.tests.cpp:<line number>: PASSED:
+  REQUIRE( ptr2.get() == 0 )
+with expansion:
+  0 == 0
+
+UniquePtr.tests.cpp:<line number>: PASSED:
+  REQUIRE( ptr2 )
+with expansion:
+  {?}
+
+UniquePtr.tests.cpp:<line number>: PASSED:
+  REQUIRE( ptr2.get() != 0 )
+with expansion:
+  0x<hex digits> != 0
+
+UniquePtr.tests.cpp:<line number>: PASSED:
+  REQUIRE( *ptr2 == 2 )
+with expansion:
+  2 == 2
+
+-------------------------------------------------------------------------------
+Basic compilation test
+  Release releases ownership
+-------------------------------------------------------------------------------
+UniquePtr.tests.cpp:<line number>
+...............................................................................
+
+UniquePtr.tests.cpp:<line number>: PASSED:
+  CHECK_FALSE( ptr )
+with expansion:
+  !{?}
+
+-------------------------------------------------------------------------------
 Basic use of the Contains range matcher
   Different argument ranges, same element type, default comparison
 -------------------------------------------------------------------------------
@@ -14792,6 +14868,6 @@ Misc.tests.cpp:<line number>
 Misc.tests.cpp:<line number>: PASSED:
 
 ===============================================================================
-test cases:  334 |  244 passed |  86 failed |  4 failed as expected
-assertions: 1913 | 1744 passed | 148 failed | 21 failed as expected
+test cases:  335 |  245 passed |  86 failed |  4 failed as expected
+assertions: 1924 | 1755 passed | 148 failed | 21 failed as expected
 

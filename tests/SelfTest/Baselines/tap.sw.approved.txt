@@ -506,6 +506,28 @@ ok {test-number} - true
 ok {test-number} - true
 # Assertions then sections
 ok {test-number} - true
+# Basic compilation test
+ok {test-number} - !(ptr) for: !{?}
+# Basic compilation test
+ok {test-number} - ptr.get() == 0 for: 0 == 0
+# Basic compilation test
+ok {test-number} - ptr2 for: {?}
+# Basic compilation test
+ok {test-number} - *ptr2 == 0 for: 0 == 0
+# Basic compilation test
+ok {test-number} - ptr2.get() == naked_ptr for: 0x<hex digits> == 0x<hex digits>
+# Basic compilation test
+ok {test-number} - !(ptr2) for: !{?}
+# Basic compilation test
+ok {test-number} - ptr2.get() == 0 for: 0 == 0
+# Basic compilation test
+ok {test-number} - ptr2 for: {?}
+# Basic compilation test
+ok {test-number} - ptr2.get() != 0 for: 0x<hex digits> != 0
+# Basic compilation test
+ok {test-number} - *ptr2 == 2 for: 2 == 2
+# Basic compilation test
+ok {test-number} - !(ptr) for: !{?}
 # Basic use of the Contains range matcher
 ok {test-number} - a, Contains(1) for: { 1, 2, 3 } contains element 1
 # Basic use of the Contains range matcher
@@ -3818,5 +3840,5 @@ ok {test-number} - q3 == 23. for: 23.0 == 23.0
 ok {test-number} -
 # xmlentitycheck
 ok {test-number} -
-1..1905
+1..1916
 
