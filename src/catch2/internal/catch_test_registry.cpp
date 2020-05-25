@@ -23,11 +23,11 @@ namespace Catch {
         CATCH_TRY {
             getMutableRegistryHub()
                     .registerTest(
-                        std::unique_ptr<TestCaseInfo>(makeTestCaseInfo(
+                        makeTestCaseInfo(
                             extractClassName( classOrMethod ),
                             nameAndTags,
-                            lineInfo).release()),
-                        std::unique_ptr<ITestInvoker>(invoker.release())
+                            lineInfo),
+                        std::move(invoker)
                     );
         } CATCH_CATCH_ALL {
             // Do not throw when constructing global objects, instead register the exception to be processed later

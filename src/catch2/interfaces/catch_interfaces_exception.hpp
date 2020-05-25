@@ -13,6 +13,7 @@
 
 #include <string>
 #include <vector>
+#include <memory>
 
 namespace Catch {
     using exceptionTranslateFunction = std::string(*)();
