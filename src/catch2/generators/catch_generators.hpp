@@ -182,7 +182,7 @@ namespace Detail {
 
         IGeneratorTracker& tracker = acquireGeneratorTracker( lineInfo );
         if (!tracker.hasGenerator()) {
-            tracker.setGenerator(std::make_unique<Generators<UnderlyingType>>(generatorExpression()));
+            tracker.setGenerator(Catch::Detail::make_unique<Generators<UnderlyingType>>(generatorExpression()));
         }
 
         auto const& generator = static_cast<IGenerator<UnderlyingType> const&>( *tracker.getGenerator() );
