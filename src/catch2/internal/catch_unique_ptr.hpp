@@ -1,6 +1,7 @@
 #ifndef CATCH_UNIQUE_PTR_HPP_INCLUDED
 #define CATCH_UNIQUE_PTR_HPP_INCLUDED
 
+#include <utility>
 #include <type_traits>
 
 namespace Catch {
@@ -18,6 +19,22 @@ namespace Detail {
         explicit constexpr unique_ptr(T* ptr):
             m_ptr(ptr)
         {}
+
+        //template <typename U, typename = std::enable_if_t<std::is_base_of<T, U>::value>>
+        template <typename U>
+        unique_ptr(unique_ptr<U>&& from):
+            m_ptr(from.release())
+        {}
+
+        //template <typename U, typename = std::enable_if_t<std::is_base_of<T, U>::value>>
+        template <typename U>
+        unique_ptr& operator=(unique_ptr<U>&& from) {
+            // Guard self-assignment?
+            delete m_ptr;
+            m_ptr = from.release();
+
+            return *this;
+        }
 
         unique_ptr(unique_ptr const&) = delete;
         unique_ptr& operator=(unique_ptr const&) = delete;
@@ -77,6 +94,11 @@ namespace Detail {
     template <typename T>
     class unique_ptr<T[]>;
 
+    template <typename T, typename... Args>
+    unique_ptr<T> make_unique(Args&&... args) {
+        // Static cast to avoid bringing in utility instead?
+        return unique_ptr<T>(new T(std::forward<Args>(args)...));
+    }
 
 
 } // end namespace Detail
