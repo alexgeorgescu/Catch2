@@ -37,12 +37,16 @@ namespace Catch {
 
         virtual void registerTest( std::unique_ptr<TestCaseInfo> testInfo, std::unique_ptr<ITestInvoker> testInvoker );
 
-        std::vector<std::unique_ptr<TestCaseInfo>> const& getAllInfos() const override;
+        std::vector<TestCaseInfo*> const& getAllInfos() const override;
         std::vector<TestCaseHandle> const& getAllTests() const override;
         std::vector<TestCaseHandle> const& getAllTestsSorted( IConfig const& config ) const override;
 
     private:
-        std::vector<std::unique_ptr<TestCaseInfo>> m_infos;
+        std::vector<std::unique_ptr<TestCaseInfo>> m_owned_test_infos;
+        // Keeps a materialized vector for `getAllInfos`.
+        // We should get rid of that eventually (see interface note)
+        std::vector<TestCaseInfo*> m_viewed_test_infos;
+
         std::vector<std::unique_ptr<ITestInvoker>> m_invokers;
         std::vector<TestCaseHandle> m_handles;
         mutable RunTests::InWhatOrder m_currentSortOrder = RunTests::InDeclarationOrder;

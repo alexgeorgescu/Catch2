@@ -10,6 +10,9 @@
 #define TWOBLUECUBES_CATCH_REPORTER_REGISTRARS_HPP_INCLUDED
 
 #include <catch2/interfaces/catch_interfaces_registry_hub.hpp>
+#include <catch2/internal/catch_unique_ptr.hpp>
+
+#include <memory>
 
 namespace Catch {
 
@@ -50,7 +53,7 @@ namespace Catch {
     public:
 
         ListenerRegistrar() {
-            getMutableRegistryHub().registerListener( std::make_unique<ListenerFactory>() );
+            getMutableRegistryHub().registerListener( Detail::make_unique<ListenerFactory>() );
         }
     };
 }

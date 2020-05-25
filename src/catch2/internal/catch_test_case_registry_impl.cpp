@@ -118,12 +118,13 @@ namespace {
 
     void TestRegistry::registerTest(std::unique_ptr<TestCaseInfo> testInfo, std::unique_ptr<ITestInvoker> testInvoker) {
         m_handles.emplace_back(testInfo.get(), testInvoker.get());
-        m_infos.push_back(std::move(testInfo));
+        m_viewed_test_infos.push_back(testInfo.get());
+        m_owned_test_infos.push_back(std::move(testInfo));
         m_invokers.push_back(std::move(testInvoker));
     }
 
-    std::vector<std::unique_ptr<TestCaseInfo>> const& TestRegistry::getAllInfos() const {
-        return m_infos;
+    std::vector<TestCaseInfo*> const& TestRegistry::getAllInfos() const {
+        return m_viewed_test_infos;
     }
 
     std::vector<TestCaseHandle> const& TestRegistry::getAllTests() const {

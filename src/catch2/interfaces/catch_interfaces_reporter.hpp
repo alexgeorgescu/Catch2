@@ -17,6 +17,7 @@
 #include <catch2/internal/catch_message_info.hpp>
 #include <catch2/internal/catch_option.hpp>
 #include <catch2/internal/catch_stringref.hpp>
+#include <catch2/internal/catch_unique_ptr.hpp>
 
 #include <catch2/benchmark/catch_estimate.hpp>
 #include <catch2/benchmark/catch_outlier_classification.hpp>
@@ -229,7 +230,7 @@ namespace Catch {
         virtual IStreamingReporterPtr create( ReporterConfig const& config ) const = 0;
         virtual std::string getDescription() const = 0;
     };
-    using IReporterFactoryPtr = std::unique_ptr<IReporterFactory>;
+    using IReporterFactoryPtr = Detail::unique_ptr<IReporterFactory>;
 
     struct IReporterRegistry {
         using FactoryMap = std::map<std::string, IReporterFactoryPtr>;
