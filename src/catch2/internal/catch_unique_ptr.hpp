@@ -65,8 +65,7 @@ namespace Detail {
         // TODO: assert non-null?
         T& operator*() { return *m_ptr; }
         T const& operator*() const { return *m_ptr; }
-        T* operator->() { return m_ptr; }
-        T const* operator->() const { return m_ptr; }
+        T* operator->() const noexcept { return m_ptr; }
 
         T* get() { return m_ptr; }
         T const* get() const { return m_ptr; }
