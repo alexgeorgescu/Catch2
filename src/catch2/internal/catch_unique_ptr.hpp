@@ -1,7 +1,6 @@
 #ifndef CATCH_UNIQUE_PTR_HPP_INCLUDED
 #define CATCH_UNIQUE_PTR_HPP_INCLUDED
 
-#include <utility>
 #include <type_traits>
 
 namespace Catch {
@@ -96,7 +95,7 @@ namespace Detail {
     template <typename T, typename... Args>
     unique_ptr<T> make_unique(Args&&... args) {
         // Static cast to avoid bringing in utility instead?
-        return unique_ptr<T>(new T(std::forward<Args>(args)...));
+        return unique_ptr<T>(new T(static_cast<Args&&>(args)...));
     }
 
 
