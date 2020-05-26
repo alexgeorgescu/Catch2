@@ -43,11 +43,35 @@ namespace Detail {
         using type = T;
     };
 
+    template <typename T>
+    using GeneratorPtr = Catch::Detail::unique_ptr<IGenerator<T>>;
+
+    template <typename T>
+    class GeneratorWrapper final {
+        GeneratorPtr<T> m_generator;
+    public:
+        //! Takes ownership of the passed pointer.
+        GeneratorWrapper(IGenerator<T>* generator):
+            m_generator(generator) {}
+        GeneratorWrapper(GeneratorPtr<T> generator):
+            m_generator(std::move(generator)) {}
+
+        T const& get() const {
+            return m_generator->get();
+        }
+        bool next() {
+            return m_generator->next();
+        }
+    };
+
+
     template<typename T>
     class SingleValueGenerator final : public IGenerator<T> {
         T m_value;
     public:
-        SingleValueGenerator(T&& value) : m_value(std::move(value)) {}
+        SingleValueGenerator(T&& value):
+            m_value(std::forward<T>(value))
+        {}
 
         T const& get() const override {
             return m_value;
@@ -77,27 +101,12 @@ namespace Detail {
     };
 
     template <typename T>
-    class GeneratorWrapper final {
-        std::unique_ptr<IGenerator<T>> m_generator;
-    public:
-        GeneratorWrapper(std::unique_ptr<IGenerator<T>> generator):
-            m_generator(std::move(generator))
-        {}
-        T const& get() const {
-            return m_generator->get();
-        }
-        bool next() {
-            return m_generator->next();
-        }
-    };
-
-    template <typename T>
     GeneratorWrapper<T> value(T&& value) {
-        return GeneratorWrapper<T>(std::make_unique<SingleValueGenerator<T>>(std::forward<T>(value)));
+        return GeneratorWrapper<T>(Catch::Detail::make_unique<SingleValueGenerator<T>>(std::forward<T>(value)));
     }
     template <typename T>
     GeneratorWrapper<T> values(std::initializer_list<T> values) {
-        return GeneratorWrapper<T>(std::make_unique<FixedValuesGenerator<T>>(values));
+        return GeneratorWrapper<T>(Catch::Detail::make_unique<FixedValuesGenerator<T>>(values));
     }
 
     template<typename T>
