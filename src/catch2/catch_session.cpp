@@ -252,7 +252,7 @@ namespace Catch {
     }
     Config& Session::config() {
         if( !m_config )
-            m_config = std::make_unique<Config>( m_configData );
+            m_config = Detail::make_unique<Config>( m_configData );
         return *m_config;
     }
 
